@@ -1,0 +1,129 @@
+services:
+  gateserver:
+    name: pcmspf-service-gateserver
+    cn: 微服务网关
+    health-check-mode: nacos
+    nacos-namespace: a79b03e4-81c9-4322-93f4-eb3751e53c8e
+    nacos-username: nacos
+    nacos-password: nacos
+
+  usercenter:
+    name: usercenter
+    cn: 用户中心服务
+    health-check-mode: nacos
+    nacos-namespace: a79b03e4-81c9-4322-93f4-eb3751e53c8e
+    nacos-username: nacos
+    nacos-password: nacos
+
+  file-server:
+    name: file-server
+    cn: 文件服务
+    health-check-mode: nacos
+    nacos-namespace: a79b03e4-81c9-4322-93f4-eb3751e53c8e
+    nacos-username: nacos
+    nacos-password: nacos
+
+  pcmspf-service-messageserver:
+    name:  pcmspf-service-messageserver
+    cn: 消息服务
+    health-check-mode: nacos
+    nacos-namespace: a79b03e4-81c9-4322-93f4-eb3751e53c8e
+    nacos-username: nacos
+    nacos-password: nacos
+
+  3d-userofplatformserver:
+    name:  3d-userofPlatformServer
+    cn: 3d-userofPlatformServer
+    health-check-mode: nacos
+    nacos-namespace: a79b03e4-81c9-4322-93f4-eb3751e53c8e
+    nacos-username: nacos
+    nacos-password: nacos
+
+  3d-amserver:
+    name:  3d-amServer
+    cn: 3d-amServer
+    health-check-mode: nacos
+    nacos-namespace: a79b03e4-81c9-4322-93f4-eb3751e53c8e
+    nacos-username: nacos
+    nacos-password: nacos
+
+  3d-pushcollectionserver:
+    name: 3d-pushCollectionServer
+    cn: 3d-pushCollectionServer
+    health-check-mode: nacos
+    nacos-namespace: a79b03e4-81c9-4322-93f4-eb3751e53c8e
+    nacos-username: nacos
+    nacos-password: nacos
+
+  3d-sdxtserver:
+    name: 3d-sdxtServer
+    cn: 3d-sdxtService
+    health-check-mode: nacos
+    nacos-namespace: a79b03e4-81c9-4322-93f4-eb3751e53c8e
+    nacos-username: nacos
+    nacos-password: nacos
+
+  3d-taskserver:
+    name: 3d-taskServer
+    cn: 3d-taskServer
+    health-check-mode: nacos
+    nacos-namespace: a79b03e4-81c9-4322-93f4-eb3751e53c8e
+    nacos-username: nacos
+    nacos-password: nacos
+
+  nginx-yuntu:
+    name: nginx-yuntu
+    cn: nginx-yuntu
+    health-check-mode: http
+    health-check-endpoint: /index.html
+
+  pxc:
+    name: pxc
+    cn: mysql 数据库
+    health-check-mode: docker-command
+    health-check-cmd: bash -c 'mysql -u root --password=${MYSQL_ROOT_PASSWORD} -e "show databases"'
+
+  nacos:
+    name: nacos
+    cn: nacos
+    health-check-mode: http
+    health-check-endpoint: /nacos/index.html
+
+  rocketmq:
+    name: rocketmq
+    cn: rocketmq
+    health-check-mode: docker-command
+    health-check-cmd: ./mqadmin topicList -n rocketmq-namesrv:9876
+
+  rabbitmq:
+    name: rabbitmq
+    cn: rocketmq
+    health-check-mode: docker-command
+    health-check-cmd: rabbitmqctl ping
+
+  redis:
+    name: redis
+    cn: redis
+    health-check-mode: docker-command
+    health-check-cmd: redis-cli ping
+  emqx:
+    name: emqx
+    cn: emqx
+    health-check-mode: docker-command
+    health-check-cmd: emqx ping
+
+  minio:
+    name: minio
+    cn: minio
+
+  basic-service-zookeeper:
+    name: basic-service-zookeeper
+    cn: zookeeper
+    health-check-mode: docker-command
+    health-check-cmd: zkCli.sh stat /
+
+  basic-service-kafka:
+    name: basic-service-kafka
+    cn: kafka
+    health-check-mode: docker-command
+    health-check-cmd: ./bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
